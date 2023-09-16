@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{%include 'primary/header.html'%}
+
+<body>
+    {%if user.is_authenticated%}
+    <h1>Shopping Cart</h1>
+<ul>
+    {% for item in cart_items %}
+    <li>
+        {{ item.product.name }} - Quantity: {{ item.quantity }}
+    </li>
+    {% endfor %}
+</ul>
+    {%else%}
+    <h1> You are not logged in. Please Login to Order</h1>
+    <div class="col-12">
+        <button class="btn btn-outline-success" type="submit"><a href="{%url 'login'%}" style="font-weight:bolder; font-size:larger;color:aquamarine">Log In</a></button>
+      </div>
+    {%endif%}
+    {%include 'primary/footer.html'%}
+</body>
+</html>
